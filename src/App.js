@@ -1,15 +1,19 @@
+import { Route, Routes } from "react-router-dom";
+import UserRoutes from "./Routes/UserRoutes";
+import AdminRoutes from "./Routes/AdminRoutes";
 
-import Header from './user/components/Header/Header';
-import Footer from './user/components/Footer/Footer';
-import Home from './user/container/Home/Home';
+
+
 
 function App() {
   return (
     <>
-    <Header/>
-    <Home/>
-    <Footer/>
-    </>
+   <Routes>
+    <Route exact path="/*" element={<UserRoutes />} />
+    <Route exact path="/admin/*" element={<AdminRoutes />}/>
+   </Routes>
+
+   </>
   );
 }
 
