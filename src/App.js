@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import UserRoutes from "./Routes/UserRoutes";
 import AdminRoutes from "./Routes/AdminRoutes";
+import PrivateRoutes from "./Routes/PrivateRoutes";
 
 
 
@@ -8,12 +9,14 @@ import AdminRoutes from "./Routes/AdminRoutes";
 function App() {
   return (
     <>
-   <Routes>
-    <Route exact path="/*" element={<UserRoutes />} />
-    <Route exact path="/admin/*" element={<AdminRoutes />}/>
-   </Routes>
+      <Routes>
+        <Route exact path="/*" element={<UserRoutes />} />
+        <Route element={<PrivateRoutes />}>
+          <Route exact path="/admin/*" element={<AdminRoutes />} />
+        </Route>
+      </Routes>
 
-   </>
+    </>
   );
 }
 

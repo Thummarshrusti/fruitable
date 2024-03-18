@@ -3,13 +3,12 @@ import { Link } from 'react-router-dom';
 
 function Shop(props) {
     const [fruite, setFruite] = useState([])
-    const [search,setSearch] = useState('');
-    const [catagory,setCatagory] = useState ([])
-    // const [sort,setSort] =useState("")
-    // const [uniqe,setUniqe] = useState([])
-    // console.log(sort);
-// console.log(fruite);
+    const [search, setSearch] = useState('');
+    const [catagory, setCatagory] = useState([]);
+    const [products,setProducts] = useState([]);
+    const [price , setPrice] = useState([]);
 
+// console.log(price);
     const getData = async () => {
         // console.log("hello");
         const reasponse = await fetch("http://localhost:8000/fruits");
@@ -22,24 +21,31 @@ function Shop(props) {
             }
         })
 
+        
         // console.log(uniqeCatagory);
         setCatagory(uniqeCatagory)
         setFruite(data)
+        setProducts(data)
+        // setPrice(data)
     }
 
     const handleFilter = () => {
         // console.log("uh");
-        let fdata ;
-        fdata = fruite.filter((v) =>(
+        let fdata;
+        fdata = fruite.filter((v) => (
             v.name.toLowerCase().includes(search)
         ))
         // console.log(fdata);
+        if (catagory) {
+            fdata.filter((v) => v.name === catagory)
+        }
 
-        if (fruite) {
-            fdata= fruite.filter((v) => v.name === name)
-          }
+      
+        if (price) {
+            fdata.filter((v) => v.name === price)
+        }
 
-        //   console.log("sort");
+        console.log(price);
         return fdata;
 
     }
@@ -71,7 +77,7 @@ function Shop(props) {
                             <div className="row g-4">
                                 <div className="col-xl-3">
                                     <div className="input-group w-100 mx-auto d-flex">
-                                        <input type="search"  className="form-control p-3" placeholder="keywords" aria-describedby="search-icon-1" onChange={(event) => setSearch(event.target.value)}/>
+                                        <input type="search" className="form-control p-3" placeholder="keywords" aria-describedby="search-icon-1" onChange={(event) => setSearch(event.target.value)} />
                                         <span id="search-icon-1" className="input-group-text p-3"><i className="fa fa-search" /></span>
                                     </div>
                                 </div>
@@ -94,20 +100,26 @@ function Shop(props) {
                                         <div className="col-lg-12">
                                             <div className="mb-3">
                                                 <h4>Categories</h4>
-                                                <ul className="list-unstyled fruite-categorie">
-                                                    {
-                                                        catagory.map((v) => (
-                                                            <button onClick={() => setFruite (v)}>{v}</button>
-                                                        ))
-                                                    }
-                                                  
-                                                </ul>
-                                            </div>
+                                                {
+                                                    catagory.map((v) => (
+                                                        <ul class="list-unstyled fruite-categorie">
+                                                        <li>
+                                                            <div class="d-flex justify-content-between fruite-name">
+                                                                <a href="#" onClick={() => setCatagory (v)}><i class="fas fa-apple-alt me-2"></i>{v}</a>
+                                                                <span>({ products.filter((p) => p.name === v).length})</span>
+                                                            </div>
+                                                        </li>
+                                                        
+                                                    </ul> 
+                                                    ))
+                                                }
+                                                                                         
+                                             </div>
                                         </div>
                                         <div className="col-lg-12">
                                             <div className="mb-3">
                                                 <h4 className="mb-2">Price</h4>
-                                                <input type="range" className="form-range w-100" id="rangeInput" name="rangeInput" min={0} max={500} defaultValue={0} oninput="amount.value=rangeInput.value" />
+                                                <input type="range" className="form-range w-100" id="rangeInput" name="rangeInput" min={0} max={500} defaultValue={0} oninput="amount.value=rangeInput.value" onChange={(event) => setPrice(event.target.value)} />
                                                 <output id="amount" name="amount" min-velue={0} max-value={500} htmlFor="rangeInput">0</output>
                                             </div>
                                         </div>
@@ -215,20 +227,20 @@ function Shop(props) {
                                             finalData.map((v) => (
                                                 <div className="col-md-6 col-lg-6 col-xl-4">
                                                     <Link to={`/shop/${v.id}`}>
-                                                    <div className="rounded position-relative fruite-item">
-                                                        <div className="fruite-img">
-                                                            <img src={v.image} className="img-fluid w-100 rounded-top" alt />
-                                                        </div>
-                                                        <div className="text-white bg-secondary px-3 py-1 rounded position-absolute" style={{ top: 10, left: 10 }}>Fruits</div>
-                                                        <div className="p-4 border border-secondary border-top-0 rounded-bottom">
-                                                            <h4>{v.name}</h4>
-                                                            <p>{v.description}</p>
-                                                            <div className="d-flex justify-content-between flex-lg-wrap">
-                                                                <p className="text-dark fs-5 fw-bold mb-0">${v.price}/ kg</p>
-                                                                <a href="#" className="btn border border-secondary rounded-pill px-3 text-primary"><i className="fa fa-shopping-bag me-2 text-primary" /> Add to cart</a>
+                                                        <div className="rounded position-relative fruite-item">
+                                                            <div className="fruite-img">
+                                                                <img src={v.image} className="img-fluid w-100 rounded-top" alt />
+                                                            </div>
+                                                            <div className="text-white bg-secondary px-3 py-1 rounded position-absolute" style={{ top: 10, left: 10 }}>Fruits</div>
+                                                            <div className="p-4 border border-secondary border-top-0 rounded-bottom">
+                                                                <h4>{v.name}</h4>
+                                                                <p>{v.description}</p>
+                                                                <div className="d-flex justify-content-between flex-lg-wrap">
+                                                                    <p className="text-dark fs-5 fw-bold mb-0">${v.price}/ kg</p>
+                                                                    <a href="#" className="btn border border-secondary rounded-pill px-3 text-primary"><i className="fa fa-shopping-bag me-2 text-primary" /> Add to cart</a>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
                                                     </Link>
                                                 </div>
                                             ))

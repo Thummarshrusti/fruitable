@@ -5,15 +5,16 @@
             "name":"Grapes",
             "description":"Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt",
             "price": 4.99 ,
-            "image":"img/fruite-item-5.jpg"
-            
+            "image":"img/fruite-item-5.jpg",
+            "type":"Organic"
         },
         {
             "id":2,
             "name":"Grapes",
             "description":"Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt",
             "price": 4.99 ,
-            "image":"img/fruite-item-5.jpg"
+            "image":"img/fruite-item-5.jpg",
+            "type":"Fresh"
 
         },
         {
@@ -21,15 +22,16 @@
             "name":"Raspberries",
             "description":"Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt",
             "price": 4.99 ,
-            "image":"img/fruite-item-2.jpg"
-
+            "image":"img/fruite-item-2.jpg",
+            "type":"Sales"
         },
         {
             "id":4,
             "name":"Apricots",
             "description":"Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt",
             "price": 4.99 ,
-            "image":"img/fruite-item-4.jpg"
+            "image":"img/fruite-item-4.jpg",
+            "type":"Discount"
 
         },
         {
@@ -37,7 +39,8 @@
             "name":"Banana",
             "description":"Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt",
             "price": 4.99 ,
-            "image":"img/fruite-item-3.jpg"
+            "image":"img/fruite-item-3.jpg",
+            "type":"Expired"
 
         },
         {
@@ -45,7 +48,8 @@
             "name":"Oranges",
             "description":"Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt",
             "price": 4.99 ,
-            "image":"img/fruite-item-1.jpg"
+            "image":"img/fruite-item-1.jpg",
+            "type":"Organic"
 
         },
         {
@@ -53,7 +57,8 @@
             "name":"Raspberries",
             "description":"Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt",
             "price": 4.99 ,
-            "image":"img/fruite-item-2.jpg"
+            "image":"img/fruite-item-2.jpg",
+            "type":"Fresh"
 
         },
         {
@@ -61,7 +66,8 @@
             "name":"Grapes",
             "description":"Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt",
             "price": 4.99 ,
-            "image":"img/fruite-item-5.jpg"
+            "image":"img/fruite-item-5.jpg",
+            "type":"Organic"
 
         },
         {
@@ -69,7 +75,8 @@
             "name":"Oranges",
             "description":"Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt",
             "price": 4.99 ,
-            "image":"img/fruite-item-1.jpg"
+            "image":"img/fruite-item-1.jpg",
+            "type":"Fresh"
 
         }
     ]
